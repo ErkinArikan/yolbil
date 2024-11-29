@@ -1,0 +1,18 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.2' // Android Gradle Plugin
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10' // Kotlin Gradle Plugin
+        classpath 'com.basarsoft.gradle:artifactory-all:4.2.1'
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.48' // Hilt Gradle Plugin
+    }
+}
+
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+}
