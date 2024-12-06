@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- İnternet izni buraya eklenmeli -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <!-- Diğer izinler ve özellikler de buraya eklenebilir -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

@@ -21,6 +21,7 @@ import com.basarsoft.yolbil.ui.MapView
 import com.example.yolbil_jetpack_sample.ui.theme.YolbiljetpacksampleTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -57,6 +58,7 @@ fun YolbilMapScreen(
                 factory = { context ->
                     MapView(context).apply {
                         viewModel.initializeMapView(this)
+                        viewModel.addBlueDotToMap()
                     }
                 },
                 modifier = Modifier
@@ -67,13 +69,25 @@ fun YolbilMapScreen(
             // Button to trigger route creation
             Button(
                 onClick = {
-                    viewModel.createRoute()
+                    viewModel.startNavigation()
                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
                 Text(text = "Create Route")
+            }
+
+            // "Konumuma Git" Butonu
+            Button(
+                onClick = {
+                    viewModel.focusOnUserLocation() // Kullanıcıyı konumuna odakla
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Text(text = "Konumuma Git")
             }
         }
     }

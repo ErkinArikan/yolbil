@@ -9,7 +9,6 @@ import com.basarsoft.yolbil.location.GPSLocationSource
 import com.basarsoft.yolbil.location.Location
 import com.basarsoft.yolbil.location.LocationListener
 import com.basarsoft.yolbil.location.LocationSourceSnapProxy
-import com.basarsoft.yolbil.navigation.AssetsVoiceNarrator
 import com.basarsoft.yolbil.navigation.CommandListener
 import com.basarsoft.yolbil.navigation.NavigationCommand
 import com.basarsoft.yolbil.navigation.YolbilNavigationBundle
@@ -19,10 +18,6 @@ import com.basarsoft.yolbil.routing.NavigationResult
 import com.basarsoft.yolbil.ui.MapClickInfo
 import com.basarsoft.yolbil.ui.MapEventListener
 import com.basarsoft.yolbil.ui.MapView
-import com.basarsoft.yolbil.utils.AssetUtils
-import com.basarsoft.yolbil.utils.ZippedAssetPackage
-
-
 
 
 class YolbilNavigationUsage {
@@ -105,8 +100,8 @@ class YolbilNavigationUsage {
 
     fun getNavigationBundle(isOffline: Boolean): YolbilNavigationBundle {
         val baseUrl = "bms.basarsoft.com.tr"
-        val accountId = "YOUR_ACC_ID"
-        val appCode = "YOUR_APP_CODE"
+        val accountId = "YOUR_ACCID"
+        val appCode = "YOUR_APPCODE"
         val navigationBundleBuilder = YolbilNavigationBundleBuilder(
             baseUrl, accountId, appCode, snapLocationSourceProxy?.locationSource
         )
@@ -137,4 +132,5 @@ class YolbilNavigationUsage {
     fun addNavigationToMapLayers(mapView: MapView) {
         bundle?.layers?.let { mapView.layers.addAll(it) }
     }
+
 }

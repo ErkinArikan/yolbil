@@ -1,17 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id 'kotlin-kapt' // kapt eklentisi
+    id 'kotlin-kapt' // kapt plugin
     id 'com.google.dagger.hilt.android' // Hilt plugin
 }
+
 android {
     namespace 'com.example.yolbil_jetpack_sample'
-    compileSdk 35
+    compileSdk 35 // Updated compileSdk to the latest version
 
     defaultConfig {
         applicationId "com.example.yolbil_jetpack_sample"
-        minSdk 30
-        targetSdk 34
+        minSdk 30 // Minimum SDK for compatibility with Compose and Yolbil
+        targetSdk 34 // Align with the latest compileSdk version
         versionCode 1
         versionName "1.0"
 
@@ -38,18 +39,29 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.1'
+        kotlinCompilerExtensionVersion '1.5.2' // Ensure compatibility with Jetpack Compose
     }
     packaging {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += '/META-INF/{AL2.0,LGPL2.1}' // Exclude unnecessary metadata
         }
+    }
+    // Added packagingOptions for handling .so file conflicts
+    packagingOptions {
+        pickFirst 'lib/**/*.so'
     }
 }
 
 dependencies {
     // Yolbil SDK
-    implementation 'com.basarsoft.yolbil:yolbil-mobile-sdk:2.5.0'
+    implementation 'com.basarsoft.yolbil:yolbil-mobile-sdk:2.5.4' // Latest version of Yolbil SDK
+
+    // Sensor Manager
+    implementation 'us.inavi.libs:sensormanager:4.0.1' // Sensor Manager for device sensors
+
+    // Networking Libraries
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3' // Updated OkHttp for networking
+    implementation 'com.android.volley:volley:1.2.1' // Volley for HTTP requests
 
     // AndroidX Libraries
     implementation libs.androidx.core.ktx
@@ -68,8 +80,7 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.48' // Hilt Annotation Processor
 
     // Hilt Compose integration
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0' // Hilt Navigation Compose
-
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     // Testing Libraries
     testImplementation libs.junit
